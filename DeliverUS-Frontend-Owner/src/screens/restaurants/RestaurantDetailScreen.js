@@ -11,17 +11,25 @@ import * as GlobalStyles from '../../styles/GlobalStyles'
 import defaultProductImage from '../../../assets/product.jpeg'
 import { API_BASE_URL } from '@env'
 
-
-export default function RestaurantDetailScreen({ navigation, route }) {
+export default function RestaurantDetailScreen ({ navigation, route }) {
   const [restaurant, setRestaurant] = useState({})
-
+  // Obtener el restaurante y sus datos
   useEffect(() => {
-    console.log('Loading restaurant, please wait 2 seconds')
-    setTimeout(() => {
-      const fetchedRestaurant = getDetail(route.params.id)
-      setRestaurant(fetchedRestaurant)
-      console.log('Restaurant loaded')
-    }, 2000)
+    async function fetchRestaurantDetails () {
+      try {
+        const data = await getDetail(route.params.id)
+        setRestaurant(data)
+      } catch (error) {
+        showMessage({
+          message: `Error loading restaurant details. ${error}`,
+          type: 'error',
+          style: GlobalStyles.flashStyle,
+          titleStyle: GlobalStyles.flashTextStyle
+        })
+      }
+    }
+
+    fetchRestaurantDetails()
   }, [])
 
   const renderHeader = () => {

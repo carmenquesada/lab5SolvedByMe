@@ -1,6 +1,9 @@
-
+// Queremos que getAll() use la funcion get() del archivo helpers/ApiRequestsHelper
+// 1. Importamos la función get():
+import { get } from './helpers/ApiRequestsHelper'
+// 2. Modificamos getAll para que use get()
 function getAll() {
-  return restaurantsMock
+  return get('/users/myrestaurants')
 }
 
 function getDetail(id) {

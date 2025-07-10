@@ -9,7 +9,7 @@ import TextSemiBold from '../../components/TextSemibold'
 import { API_BASE_URL } from '@env'
 import restaurantLogo from '../../../assets/restaurantLogo.jpeg'
 import { showMessage } from 'react-native-flash-message'
-
+import { AuthorizationContext } from '../../context/AuthorizationContext'
 export default function RestaurantsScreen({ navigation }) {
   const [restaurants, setRestaurants] = useState([])
   // Usaremos un useContext que guardará la info de quién está logueado en un lugar accesible para todas las pantallas
@@ -54,7 +54,7 @@ export default function RestaurantsScreen({ navigation }) {
     )
   }
 
-  const renderRestaurantWithImageCard = ({ item }) => {
+  const renderRestaurantWithImageCard = ({ item }) => { // desestructurar
     return (
       <ImageCard
         imageUri={item.logo ? { uri: API_BASE_URL + '/' + item.logo } : restaurantLogo}
@@ -71,7 +71,6 @@ export default function RestaurantsScreen({ navigation }) {
       </ImageCard>
     )
   }
-
 
   return (
     <FlatList

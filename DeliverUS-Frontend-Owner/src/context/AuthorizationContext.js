@@ -120,5 +120,5 @@ const AuthorizationContextProvider = props => {
   )
 }
 
-export { AuthorizationContext }
+export { AuthorizationContext } // exportación de un objeto con esa propiedad
 export default AuthorizationContextProvider

@@ -91,4 +91,4 @@ const patch = (route, data = null) => {
   })
 }
 
-export { get, post, put, destroy, patch }
+export { get, post, put, destroy, patch } // exporta varias propiedades

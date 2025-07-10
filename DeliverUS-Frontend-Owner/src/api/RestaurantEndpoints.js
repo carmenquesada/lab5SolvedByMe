@@ -2,7 +2,7 @@
 // 1. Importamos la función get():
 import { get } from './helpers/ApiRequestsHelper'
 // 2. Modificamos getAll para que use get()
-function getAll() {
+function getAll () {
   return get('/users/myrestaurants')
 }
 
